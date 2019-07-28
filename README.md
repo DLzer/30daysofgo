@@ -19,4 +19,4 @@ go build .
 
 # Challenge Directory
 
-* [CSV Quiz](/csv_quiz)
+1. [CSV Quiz](/csv_quiz)
