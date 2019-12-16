@@ -29,7 +29,7 @@ func main() {
 	fmt.Printf("Scanning Dir: %s", dir)
 
 	// Read directory for file list
-	files, err := ioutil.ReadDir("/Users/DLzer/Documents")
+	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		log.Fatal(err)
 	}
