@@ -22,3 +22,4 @@ go build .
 1. [CSV Quiz](/csv_quiz)
 2. [URL Shortener](/url_shortener)
 3. [HTML Link Parser](/html_link_parser)
+4. [Directory Cleaner](/directory_cleanup)
