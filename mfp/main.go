@@ -45,16 +45,25 @@ func makeRequest(user string, date string) {
 	// Craft the URL
 	mfpURL := "http://www.myfitnesspal.com/reports/printable_diary/" + user + "?from=" + date + "&to=" + date
 
-	// Make the request using our URL
-	response, err := http.Get(mfpURL)
+	// Prepare new request
+	req, err := http.NewRequest("GET", mfpURL, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// Set User-Agent in the header
+	req.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36")
+
+	// Make the request
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	defer response.Body.Close()
+	// Close the response body when finished with it
+	defer resp.Body.Close()
 
 	// Load the response body with GoQuery
-	contents, err := goquery.NewDocumentFromReader(response.Body)
+	contents, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		log.Fatal(err)
 	}
